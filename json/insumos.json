@@ -1,0 +1,9 @@
+[
+  {
+    "nombre": "Salchichas",
+    "precio": "0.7",
+    "tipoVenta": "kg",
+    "tipoInsumo": "embutidos",
+    "proveedor": "venezolanos"
+  }
+]
