@@ -1,13 +1,15 @@
 import data from '../json/insumos.json' with { type: 'json' };
+import Insumo from '../model/Insumo.mjs'
 
 const insumos = data;
 
 const listado = document.querySelector('ul')
 
-function crearInsumo(nombreInsumo){
+function mostrarInsumo(insumo){
   const insumoElemento = document.createElement('li');
-  insumoElemento.textContent = nombreInsumo;
+  const insumoObjeto = new Insumo(insumo.nombre, insumo.proveedor, insumo.tipoInsumo)
+  insumoElemento.textContent = insumoObjeto.nombre.toUpperCase();
   listado.appendChild(insumoElemento);
 }
 
-insumos.forEach(insumo => crearInsumo(insumo.nombre))
+insumos.forEach(insumo => mostrarInsumo(insumo))

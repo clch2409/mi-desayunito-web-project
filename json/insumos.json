@@ -1,1 +1,1 @@
-[{"nombre":"salchichas","precio":"10","proveedor":"venezolanos","tipoDeInsumo":"embutido"}]
+[{"nombre":"papa al hilo","proveedor":"venezolanos","tipoInsumo":"aditivos"},{"nombre":"fresa","proveedor":"verduras","tipoInsumo":"frutas"},{"nombre":"caraotas","proveedor":"venezolanos","tipoInsumo":"frijoles"},{"nombre":"chorizos","proveedor":"venezolanos","tipoInsumo":"embutidos"}]
