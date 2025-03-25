@@ -6,10 +6,23 @@
   <title>Verificar Insumos</title>
   <style>
     .selected{
-      color: red;
+      color: white;
+      background-color: blue;
     }
-    #insumo{
-      /* visibility: hidden; */
+    .insumo-check{
+      visibility: hidden;
+    }
+    #insumo-form{
+      height: auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 8px;
+    }
+    .insumo-name{
+      padding: 4px;
+      border: 1px solid blueviolet;
+      width: fit-content;
     }
   </style>
 </head>
@@ -22,8 +35,8 @@
 
     <form action="" id="insumo-form">
 
-      <label for="insumo" class="insumo-name">Nombre del Insumo</label>
-      <input type="checkbox" id="insumo" class="insumo-check">
+      
+      
 
     </form>
   </main>
