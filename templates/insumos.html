@@ -10,19 +10,21 @@
       background-color: blue;
     }
     .insumo-check{
-      visibility: hidden;
+      display: none;
     }
-    #insumo-form{
+    .insumo-container{
       height: auto;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(4, auto);
-      gap: 8px;
+      column-gap: 16px;
+      row-gap: 8px;
     }
     .insumo-name{
       padding: 4px;
       border: 1px solid blueviolet;
-      width: fit-content;
+      width: 100%;
+      user-select: none;
     }
   </style>
 </head>
@@ -34,10 +36,18 @@
     <h1>Aqui se muestran los insumos</h1>
 
     <form action="" id="insumo-form">
-
-      
-      
-
+      <div class="searching-area">
+        <select name="filter" id="insumo-select">
+          <option value="todos">---------</option>
+          <option value="tipoInsumo">Tipo de Insumos</option>
+          <option value="proveedor">Proveedor</option>
+        </select>
+        <input type="search" list="filter-insumo" id="insumo-search">
+        <button id="insumo-button-search">Buscar</button>
+        <button id="insumo-button-clear">Limpiar</button>
+        <datalist id="filter-insumo"></datalist>
+      </div>
+      <div class="insumo-container"></div>
     </form>
   </main>
   <footer>
