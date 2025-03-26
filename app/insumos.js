@@ -33,8 +33,14 @@ function addColorLabel(event){
 
 //Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
-  insumosFiltered.forEach(insumo => {
-    crearLabelInputInsumo(insumo.nombre)
+  insumosFiltered.forEach((insumo, index) => {
+    if (index > 0 && index < (insumosFiltered.length - 1) && (insumo.nombre.toUpperCase() === insumosFiltered[index+1].nombre.toUpperCase()
+    || insumo.nombre.toUpperCase() === insumosFiltered[index-1].nombre.toUpperCase())){
+      crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`);
+    }
+    else{
+      crearLabelInputInsumo(insumo.nombre)
+    }
   })
 }
 
