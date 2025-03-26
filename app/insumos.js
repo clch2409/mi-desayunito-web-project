@@ -3,7 +3,7 @@ import insumosData from '../json/insumos.json' with {type: 'json'}
 const insumos = insumosData.length > 0 ? insumosData : [];
 const tipoInsumos = Array.from(new Set(insumos.map(insumo => insumo.tipoInsumo)));
 const proveedores = Array.from(new Set(insumos.map(insumo => insumo.proveedor)));
-let insumosSelected = []
+let insumosElementsSelected = [];
 let insumosFiltered = insumos;
 
 const tipoFilterTodos = 'todos';
