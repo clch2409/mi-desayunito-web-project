@@ -6,6 +6,8 @@ const proveedores = Array.from(new Set(insumos.map(insumo => insumo.proveedor)))
 let insumosSelected = []
 let insumosFiltered = insumos;
 
+const tipoFilterTodos = 'todos';
+const tipoFilterTipoInsumo = 'tipoInsumo';
 
 const insumoContainer = document.querySelector('.insumo-container');
 const insumoSelect = document.getElementById('insumo-select');
@@ -21,14 +23,15 @@ insumoButtonClear.addEventListener('click', limpiarInsumos)
 
 mostrarInsumosLabels();
 
+//Función para mostrar en color los elementos seleccionados 
 function addColorLabel(event){
   const target = event.target;
   if (target.tagName === 'LABEL'){
     target.classList.toggle('selected');
   }
-  
 }
 
+//Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
   insumosFiltered.forEach(insumo => {
     crearLabelInputInsumo(insumo.nombre)
@@ -56,16 +59,17 @@ function crearLabelInputInsumo(nombreInsumo){
 //   return inputElement;
 // }
 
+//Funciones para realizar los filtros de los insumos
 function agregarDatosListaFiltros(){
   mostrarNombresEnFiltro(insumoSelect.value)
 }
 
 function mostrarNombresEnFiltro(tipoFiltro){
   let tipoFiltroArray;
-  if (tipoFiltro === 'todos'){
+  if (tipoFiltro === tipoFilterTodos){
     tipoFiltroArray = [];
   }
-  else if (tipoFiltro === 'tipoInsumo'){
+  else if (tipoFiltro === tipoFilterTodos){
     tipoFiltroArray = tipoInsumos;
   }
   else{
@@ -89,10 +93,10 @@ function filtrarInsumos(evento){
   const tipoFiltro = insumoSelect.value;
   const nombreFiltro = insumoSearch.value;
 
-  if (tipoFiltro === 'todos'){
+  if (tipoFiltro === tipoFilterTodos){
     insumosFiltered = insumos;
   }
-  else if (tipoFiltro === 'tipoInsumo'){
+  else if (tipoFiltro === tipoFilterTipoInsumo){
     insumosFiltered = insumos.filter(insumo => insumo.tipoInsumo === nombreFiltro);
   }
   else{
@@ -104,7 +108,7 @@ function filtrarInsumos(evento){
 
 function limpiarInsumos(evento){
   evento.preventDefault()
-  insumoSelect.value = 'todos';
+  insumoSelect.value = tipoFilterTodos;
   insumoSearch.value = '';
   filtrarInsumos(evento);
 }
