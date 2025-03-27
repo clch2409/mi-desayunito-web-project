@@ -22,12 +22,14 @@ const insumoSearch = document.getElementById('insumo-search');
 const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
+const insumoButtonSend = document.getElementById('insumo-button-send');
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
 insumoButtonSearch.addEventListener('click', filtrarInsumos);
 insumoButtonClear.addEventListener('click', limpiarInsumos);
 insumoButtonClearSelection.addEventListener('click', limpiarSelecciones)
+insumoButtonSend.addEventListener('click', mostrarMensaje)
 
 mostrarInsumosLabels();
 
@@ -202,4 +204,23 @@ function deshabilitarSearch(){
 
 function habilitarSearch(){
   insumoSearch.readOnly = false;
+}
+
+function mostrarMensaje(evento){
+  evento.preventDefault()
+  alert(validarMensaje())
+  limpiarSelecciones(evento)
+}
+
+function validarMensaje(){
+  let mensaje = '¿Desea agregar los siguientes mensajes?\n';
+  if (insumosSelected.length > 0){
+    insumosSelected.forEach(insumo => {
+      mensaje += `- ${insumo}\n`
+    })
+  }
+  else{
+    mensaje = 'Primero selecciones los insumos antes de enviar el mensaje'
+  }
+  return mensaje;
 }
