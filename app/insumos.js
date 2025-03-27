@@ -8,7 +8,7 @@ const insumos = Array.from(insumosData.length > 0 ? insumosData : []).map(insumo
 });
 const tiposInsumo = Array.from(new Set(insumos.map(insumo => insumo.tipoInsumo)));
 const proveedores = Array.from(new Set(insumos.map(insumo => insumo.proveedor)));
-let insumosElementsSelected = [];
+let insumosSelected = localStorage.getItem('insumosSelected') ? JSON.parse(localStorage.getItem('insumosSelected')) : [];
 let insumosFiltered = insumos;
 
 const tipoFilterTodos = 'todos';
@@ -19,19 +19,21 @@ const insumoContainer = document.querySelector('.insumo-container');
 const insumoSelect = document.getElementById('insumo-select');
 const insumosDataList = document.getElementById('filter-insumo');
 const insumoSearch = document.getElementById('insumo-search');
-const insumoButtonSearch = document.getElementById('insumo-button-search')
-const insumoButtonClear = document.getElementById('insumo-button-clear')
+const insumoButtonSearch = document.getElementById('insumo-button-search');
+const insumoButtonClear = document.getElementById('insumo-button-clear');
+const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
 
 insumoContainer.addEventListener('click', selectInsumos);
-insumoSelect.addEventListener('change', agregarDatosListaFiltros);
+insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
 insumoButtonSearch.addEventListener('click', filtrarInsumos);
-insumoButtonClear.addEventListener('click', limpiarInsumos)
+insumoButtonClear.addEventListener('click', limpiarInsumos);
+insumoButtonClearSelection.addEventListener('click', limpiarSelecciones)
 
 mostrarInsumosLabels();
 
 //Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
-  console.log(insumosFiltered)
+  console.log(insumosSelected)
   insumosFiltered.forEach((insumo, index) => {
     if (verificarNombreInsumoRepetido(insumo, index)){
       crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`);
@@ -40,6 +42,7 @@ function mostrarInsumosLabels(){
       crearLabelInputInsumo(insumo.nombre)
     }
   })
+  deshabilitarSearch()
 }
 
 function verificarNombreInsumoRepetido(insumo, index){
@@ -85,11 +88,13 @@ function selectInsumos(evento){
   addColorLabel(target);
   const targetSeleccionado = verificarInsumoSeleccionado(target);
   if (targetSeleccionado){
-    insumosElementsSelected.push(target)
+    insumosSelected.push(target.textContent)
   }
   else{
-    insumosElementsSelected = insumosElementsSelected.filter(elemento => elemento.textContent !== target.textContent)
+    insumosSelected = insumosSelected.filter(elemento => elemento !== target.textContent)
   }
+  localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
+  console.log(localStorage)
 }
 
 function verificarInsumoSeleccionado(target){
@@ -97,24 +102,24 @@ function verificarInsumoSeleccionado(target){
 }
 
 function verificarInsumoEnInsumosSelected(nombreInsumo){
-  return insumosElementsSelected.find(insumo => insumo.textContent === nombreInsumo);
+  return insumosSelected.find(insumo => insumo === nombreInsumo);
 }
 
 //Funciones para realizar los filtros de los insumos
-function agregarDatosListaFiltros(){
-  mostrarNombresEnFiltro(insumoSelect.value)
-}
-
-function mostrarNombresEnFiltro(tipoFiltro){
+function mostrarNombresEnFiltro(){
+  const tipoFiltro = insumoSelect.value
   let tipoFiltroArray;
   if (tipoFiltro === tipoFilterTodos){
     tipoFiltroArray = [];
+    deshabilitarSearch();
   }
   else if (tipoFiltro === tipoFilterTipoInsumo){
     tipoFiltroArray = tiposInsumo;
+    habilitarSearch();
   }
   else{
     tipoFiltroArray = proveedores;
+    habilitarSearch();
   }
   insumosDataList.innerHTML = '';
   tipoFiltroArray.forEach(nombre => {
@@ -167,10 +172,34 @@ function verificarNombreFiltro(tipoFiltro, filtroNombre){
 
 function limpiarInsumos(evento){
   evento.preventDefault()
-  insumoSelect.value = tipoFilterTodos;
-  insumoSearch.value = '';
+  limpiarFiltros()
   // filtrarInsumos(evento);
+  limpiarContenedor();
+  mostrarInsumosLabels()
+}
+
+function limpiarContenedor (){
   insumoContainer.innerHTML = '';
   insumosFiltered = insumos;
-  mostrarInsumosLabels()
+}
+
+function limpiarFiltros(){
+  insumoSelect.value = tipoFilterTodos;
+  insumoSearch.value = '';
+}
+
+function limpiarSelecciones(evento){
+  evento.preventDefault();
+  localStorage.removeItem('insumosSelected');
+  insumosSelected = []
+  limpiarContenedor();
+  mostrarInsumosLabels();
+}
+
+function deshabilitarSearch(){
+  insumoSearch.readOnly = true;
+}
+
+function habilitarSearch(){
+  insumoSearch.readOnly = false;
 }
