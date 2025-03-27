@@ -37,45 +37,40 @@ mostrarInsumosLabels();
 function mostrarInsumosLabels(){
   console.log(insumosSelected)
   insumosFiltered.forEach((insumo, index) => {
-    if (verificarNombreInsumoRepetido(insumo, index)){
-      crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`);
-    }
-    else{
-      crearLabelInputInsumo(insumo.nombre)
-    }
+    crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`, insumo.id);
   })
-  deshabilitarSearch()
+  validarInfoDeSelect(insumoSelect.value)
 }
 
-function verificarNombreInsumoRepetido(insumo, index){
-  return index > 0 && index < (insumosFiltered.length - 1) && (insumo.nombre === insumosFiltered[index+1].nombre
-  || insumo.nombre === insumosFiltered[index-1].nombre);
-}
+// function verificarNombreInsumoRepetido(insumo, index){
+//   return index > 0 && index < (insumosFiltered.length - 1) && (insumo.nombre === insumosFiltered[index+1].nombre
+//   || insumo.nombre === insumosFiltered[index-1].nombre);
+// }
 
-function crearLabelInputInsumo(nombreInsumo){
+function crearLabelInputInsumo(nombreInsumo, id){
   const insumoLabelElement = document.createElement('label');
-  // const insumoInputElement = crearInputInsumo(nombreInsumo)
+  const insumoInputElement = crearInputInsumo(id)
 
   insumoLabelElement.textContent = nombreInsumo;
   insumoLabelElement.classList.add('insumo-name');
-  insumoLabelElement.htmlFor = nombreInsumo;
+  insumoLabelElement.id = id;
 
-  // insumoLabelElement.insertAdjacentElement('beforeend', insumoInputElement)
+  insumoLabelElement.insertAdjacentElement('beforeend', insumoInputElement)
 
-  if (verificarInsumoEnInsumosSelected(nombreInsumo)){
+  if (verificarInsumoEnInsumosSelected(id)){
     insumoLabelElement.classList.add(selectedClass)
   }
 
   insumoContainer.appendChild(insumoLabelElement);
 }
 
-// function crearInputInsumo(nombreInsumo){
-//   const inputElement = document.createElement('input');
-//   inputElement.type = 'checkbox';
-//   inputElement.id = nombreInsumo;
-//   inputElement.classList.add('insumo-check');
-//   return inputElement;
-// }
+function crearInputInsumo(id){
+  const inputElement = document.createElement('input');
+  inputElement.type = 'checkbox';
+  inputElement.id = id;
+  inputElement.classList.add('insumo-check');
+  return inputElement;
+}
 
 //Función para mostrar en color los elementos seleccionados 
 function addColorLabel(target){
@@ -90,21 +85,26 @@ function selectInsumos(evento){
   addColorLabel(target);
   const targetSeleccionado = verificarInsumoSeleccionado(target);
   if (targetSeleccionado){
-    insumosSelected.push(target.textContent)
+    insumosSelected.push(obtenerInsumo(target.id))
   }
   else{
-    insumosSelected = insumosSelected.filter(elemento => elemento !== target.textContent)
+    insumosSelected = insumosSelected.filter(insumo => insumo.id !== target.id)
   }
+  console.log(insumosSelected)
   localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
-  console.log(localStorage)
+  // console.log(localStorage)
+}
+
+function obtenerInsumo(id){
+  return insumosFiltered.find(insumo => insumo.id == id)
 }
 
 function verificarInsumoSeleccionado(target){
   return target.classList.contains(selectedClass)
 }
 
-function verificarInsumoEnInsumosSelected(nombreInsumo){
-  return insumosSelected.find(insumo => insumo === nombreInsumo);
+function verificarInsumoEnInsumosSelected(id){
+  return insumosSelected.find(insumo => insumo.id === id);
 }
 
 //Funciones para realizar los filtros de los insumos
@@ -113,16 +113,14 @@ function mostrarNombresEnFiltro(){
   let tipoFiltroArray;
   if (tipoFiltro === tipoFilterTodos){
     tipoFiltroArray = [];
-    deshabilitarSearch();
   }
   else if (tipoFiltro === tipoFilterTipoInsumo){
     tipoFiltroArray = tiposInsumo;
-    habilitarSearch();
   }
   else{
     tipoFiltroArray = proveedores;
-    habilitarSearch();
   }
+  validarInfoDeSelect(tipoFiltro)
   insumosDataList.innerHTML = '';
   tipoFiltroArray.forEach(nombre => {
     insumosDataList.appendChild(crearDatosListaFiltro(nombre))
@@ -208,8 +206,10 @@ function habilitarSearch(){
 
 function mostrarMensaje(evento){
   evento.preventDefault()
-  alert(validarMensaje())
-  limpiarSelecciones(evento)
+  if (confirm(validarMensaje())){
+    limpiarSelecciones(evento)
+  }
+  
 }
 
 function validarMensaje(){
@@ -223,4 +223,13 @@ function validarMensaje(){
     mensaje = 'Primero selecciones los insumos antes de enviar el mensaje'
   }
   return mensaje;
+}
+
+function validarInfoDeSelect(tipoFiltro){
+  if (tipoFiltro == tipoFilterTodos){
+    deshabilitarSearch();
+  }
+  else{
+    habilitarSearch();
+  }
 }
