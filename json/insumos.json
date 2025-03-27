@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "nombre": "papas",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 2,
+    "nombre": "salchichas",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "embutidos"
+  },
+  {
+    "id": 3,
+    "nombre": "Pan Hamburguesa",
+    "proveedor": "Molino",
+    "tipoInsumo": "panes"
+  },
+  {
+    "id": 4,
+    "nombre": "pan hamburguesa",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "panes"
+  },
+  {
+    "id": 5,
+    "nombre": "pan shawarma",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "panes"
+  },
+  {
+    "id": 6,
+    "nombre": "chorizos",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "embutidos"
+  },
+  {
+    "id": 7,
+    "nombre": "servilletas",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 8,
+    "nombre": "servilletas",
+    "proveedor": "Mass",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 9,
+    "nombre": "toallin",
+    "proveedor": "Mass",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 10,
+    "nombre": "aceite",
+    "proveedor": "Mass",
+    "tipoInsumo": "aceite"
+  },
+  {
+    "id": 11,
+    "nombre": "tenedores",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 12,
+    "nombre": "cebolla china",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 13,
+    "nombre": "rocoto",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 14,
+    "nombre": "aji lima",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 15,
+    "nombre": "carne molida",
+    "proveedor": "Carneros Mercado",
+    "tipoInsumo": "carnes"
+  },
+  {
+    "id": 16,
+    "nombre": "pollo",
+    "proveedor": "Pollero Mercado",
+    "tipoInsumo": "carnes"
+  },
+  {
+    "id": 17,
+    "nombre": "pollo",
+    "proveedor": "Mass",
+    "tipoInsumo": "carnes"
+  },
+  {
+    "id": 18,
+    "nombre": "ketchup",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "salsas"
+  },
+  {
+    "id": 19,
+    "nombre": "mostaza",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "salsas"
+  },
+  {
+    "id": 20,
+    "nombre": "BBQ",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "salsas"
+  },
+  {
+    "id": 21,
+    "nombre": "doña gusta gallina",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 22,
+    "nombre": "doña gusta carne",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 23,
+    "nombre": "doña gusta tocino",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 24,
+    "nombre": "arroz",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "cereales"
+  },
+  {
+    "id": 25,
+    "nombre": "picadillo",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "embutidos"
+  },
+  {
+    "id": 26,
+    "nombre": "harina nieve",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "harinas"
+  },
+  {
+    "id": 27,
+    "nombre": "harina pan",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "harinas"
+  },
+  {
+    "id": 28,
+    "nombre": "aceituna",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 29,
+    "nombre": "culantro",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 30,
+    "nombre": "pan panaderia",
+    "proveedor": "Panaderia",
+    "tipoInsumo": "panes"
+  },
+  {
+    "id": 31,
+    "nombre": "lechuga",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 32,
+    "nombre": "caja salchipapa #5",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 33,
+    "nombre": "bolsa 1kg sin asa",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 34,
+    "nombre": "bolsa 1,5kg sin asa",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 35,
+    "nombre": "bolsa 2kg sin asa",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 36,
+    "nombre": "bolsa 1,5kg con asa",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 37,
+    "nombre": "bolsa 2kg con asa",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 38,
+    "nombre": "bolsa de hamburguesa (papel)",
+    "proveedor": "Descartables Mercado",
+    "tipoInsumo": "descartables"
+  },
+  {
+    "id": 39,
+    "nombre": "sal",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 40,
+    "nombre": "comino",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 41,
+    "nombre": "pimentón",
+    "proveedor": "Verduleros Mercado",
+    "tipoInsumo": "verduras"
+  },
+  {
+    "id": 42,
+    "nombre": "orégano",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  },
+  {
+    "id": 43,
+    "nombre": "harina de trigo",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "harinas"
+  },
+  {
+    "id": 44,
+    "nombre": "chuño",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "harinas"
+  },
+  {
+    "id": 45,
+    "nombre": "sillao",
+    "proveedor": "Abarrotes Mercado",
+    "tipoInsumo": "condimentos"
+  }
+]

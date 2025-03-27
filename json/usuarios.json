@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "admin"
+  },
+  {
+    "id": 2,
+    "username": "adriana_cuba",
+    "password": "123456"
+  },
+  {
+    "id": 3,
+    "username": "isolina_cuba",
+    "password": "123456"
+  },
+  {
+    "id": 4,
+    "username": "clch2409",
+    "password": "123456"
+  }
+]
