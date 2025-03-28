@@ -9,7 +9,7 @@ const insumos = Array.from(insumosData.length > 0 ? insumosData : []).map(insumo
 const tiposInsumo = Array.from(new Set(insumos.map(insumo => insumo.tipoInsumo)));
 const proveedores = Array.from(new Set(insumos.map(insumo => insumo.proveedor)));
 let insumosSelected = localStorage.getItem('insumosSelected') ? JSON.parse(localStorage.getItem('insumosSelected')) : [];
-let insumosFiltered = insumos;
+let insumosFiltered = insumos.sort((a, b) => a.proveedor.localeCompare(b.proveedor, 'es'));
 
 const tipoFilterTodos = 'todos';
 const tipoFilterTipoInsumo = 'tipoInsumo';
@@ -35,7 +35,6 @@ mostrarInsumosLabels();
 
 //Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
-  console.log(insumosSelected)
   insumosFiltered.forEach((insumo, index) => {
     crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`, insumo.id);
   })
@@ -90,9 +89,7 @@ function selectInsumos(evento){
   else{
     insumosSelected = insumosSelected.filter(insumo => insumo.id !== target.id)
   }
-  console.log(insumosSelected)
   localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
-  // console.log(localStorage)
 }
 
 function obtenerInsumo(id){
@@ -206,17 +203,18 @@ function habilitarSearch(){
 
 function mostrarMensaje(evento){
   evento.preventDefault()
-  if (confirm(validarMensaje())){
+  if (confirm(mensajeValidacion())){
+    enviarMensaje()
     limpiarSelecciones(evento)
   }
   
 }
 
-function validarMensaje(){
-  let mensaje = '¿Desea agregar los siguientes mensajes?\n';
+function mensajeValidacion(){
+  let mensaje = '¿Desea agregar los siguientes insumos?\n';
   if (insumosSelected.length > 0){
     insumosSelected.forEach(insumo => {
-      mensaje += `- ${insumo}\n`
+      mensaje += `- ${insumo.nombre}\n`
     })
   }
   else{
@@ -232,4 +230,16 @@ function validarInfoDeSelect(tipoFiltro){
   else{
     habilitarSearch();
   }
+}
+
+function enviarMensaje(){
+  let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n\n`;
+  insumosSelected.forEach(insumo => {
+    mensaje += `- ${insumo.nombre} -- ${insumo.proveedor}\n`
+  })
+  let telefono = "+51919059437";
+  let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+
 }
