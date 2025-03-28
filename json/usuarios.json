@@ -6,17 +6,23 @@
   },
   {
     "id": 2,
+    "nombre": "Adriana",
     "username": "adriana_cuba",
-    "password": "123456"
+    "password": "123456",
+    "phone": "954828609"
   },
   {
     "id": 3,
+    "nombre": "Isolina",
     "username": "isolina_cuba",
-    "password": "123456"
+    "password": "123456",
+    "phone": "954989512"
   },
   {
     "id": 4,
+    "nombre": "César",
     "username": "clch2409",
-    "password": "123456"
+    "password": "123456",
+    "phone": "919059437"
   }
 ]

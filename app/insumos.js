@@ -1,4 +1,5 @@
 import insumosData from '../json/insumos.json' with {type: 'json'}
+import usuarioData from '../json/usuarios.json' with {type: 'json'}
 
 const insumos = Array.from(insumosData.length > 0 ? insumosData : []).map(insumo => {
   return  {
@@ -15,6 +16,8 @@ const tipoFilterTodos = 'todos';
 const tipoFilterTipoInsumo = 'tipoInsumo';
 const selectedClass = 'selected';
 
+const usuarios = usuarioData;
+
 const insumoContainer = document.querySelector('.insumo-container');
 const insumoSelect = document.getElementById('insumo-select');
 const insumosDataList = document.getElementById('filter-insumo');
@@ -22,16 +25,16 @@ const insumoSearch = document.getElementById('insumo-search');
 const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
-const insumoButtonSend = document.getElementById('insumo-button-send');
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
 insumoButtonSearch.addEventListener('click', filtrarInsumos);
 insumoButtonClear.addEventListener('click', limpiarInsumos);
 insumoButtonClearSelection.addEventListener('click', limpiarSelecciones)
-insumoButtonSend.addEventListener('click', mostrarMensaje)
 
 mostrarInsumosLabels();
+mostrarBotones();
+
 
 //Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
@@ -202,9 +205,18 @@ function habilitarSearch(){
 }
 
 function mostrarMensaje(evento){
-  evento.preventDefault()
-  if (confirm(mensajeValidacion())){
-    enviarMensaje()
+  evento.preventDefault();
+  const mensajeValidacionObjeto = mensajeValidacion()
+  let aceptaEnviarMensaje;
+  if (mensajeValidacionObjeto.validado){
+    aceptaEnviarMensaje = confirm(mensajeValidacionObjeto.mensaje)
+  }
+  else{
+    alert(mensajeValidacionObjeto.mensaje);
+  }
+
+  if(aceptaEnviarMensaje){
+    enviarMensaje(evento.target.id)
     limpiarSelecciones(evento)
   }
   
@@ -212,15 +224,19 @@ function mostrarMensaje(evento){
 
 function mensajeValidacion(){
   let mensaje = '¿Desea agregar los siguientes insumos?\n';
+  let objetoMensaje = {}
   if (insumosSelected.length > 0){
     insumosSelected.forEach(insumo => {
       mensaje += `- ${insumo.nombre}\n`
     })
+    objetoMensaje.validado = true;
   }
   else{
-    mensaje = 'Primero selecciones los insumos antes de enviar el mensaje'
+    mensaje = 'Primero selecciones los insumos antes de enviar el mensaje';
+    objetoMensaje.validado = false;
   }
-  return mensaje;
+  objetoMensaje.mensaje = mensaje;
+  return objetoMensaje;
 }
 
 function validarInfoDeSelect(tipoFiltro){
@@ -232,14 +248,38 @@ function validarInfoDeSelect(tipoFiltro){
   }
 }
 
-function enviarMensaje(){
+//Creacion de botones
+function mostrarBotones(){
+  usuarios.forEach(usuario => {
+    console.log(usuario)
+    if (usuario.username !== 'admin'){
+      insumoButtonClearSelection.insertAdjacentElement('afterend', crearBotones(usuario));
+    }
+  })
+}
+
+function crearBotones(usuario){
+  const botonElement = document.createElement('button');
+  botonElement.textContent = `Enviar a ${usuario.nombre}`;
+  botonElement.id = usuario.username;
+  botonElement.addEventListener('click', mostrarMensaje)
+
+  return botonElement;
+}
+
+function enviarMensaje(username){
+  const user = obtenerUsuarioPorUsername(username)
   let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n\n`;
-  insumosSelected.forEach(insumo => {
+  insumosSelected.sort((a,b) => a.proveedor.localeCompare(b.proveedor)).forEach(insumo => {
     mensaje += `- ${insumo.nombre} -- ${insumo.proveedor}\n`
   })
-  let telefono = "+51919059437";
+  let telefono = user.phone;
   let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
   window.open(url, "_blank");
 
+}
+
+function obtenerUsuarioPorUsername(nombreUsuario){
+  return usuarios.find(usuario => usuario.username === nombreUsuario)
 }
