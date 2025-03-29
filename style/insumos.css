@@ -1,0 +1,29 @@
+.selected {
+  color: white;
+  background-color: blue;
+}
+
+.insumo-check {
+  display: none;
+}
+
+.insumo-container {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 28px;
+  row-gap: 16px;
+}
+
+.insumo-name {
+  padding: 8px;
+  border: 1px solid blueviolet;
+  width: 100%;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=insumos.css.map */
