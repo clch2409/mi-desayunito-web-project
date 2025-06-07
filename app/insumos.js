@@ -57,11 +57,13 @@ function crearLabelInputInsumo(nombreInsumo, id){
   insumoLabelElement.classList.add('insumo-name');
   insumoLabelElement.id = id;
 
-  insumoLabelElement.insertAdjacentElement('beforeend', insumoInputElement)
-
+  // debugger
   if (verificarInsumoEnInsumosSelected(id)){
-    insumoLabelElement.classList.add(selectedClass)
+    // insumoLabelElement.classList.add(selectedClass)
+    insumoInputElement.checked = true;
   }
+
+  insumoLabelElement.insertAdjacentElement('beforeend', insumoInputElement)
 
   insumoContainer.appendChild(insumoLabelElement);
 }
@@ -84,8 +86,9 @@ function addColorLabel(target){
 //Funciones para persistencia de insumos seleccionados
 function selectInsumos(evento){
   const target = evento.target
-  addColorLabel(target);
+  // addColorLabel(target);
   const targetSeleccionado = verificarInsumoSeleccionado(target);
+  console.log(target);
   if (targetSeleccionado){
     insumosSelected.push(obtenerInsumo(target.id))
   }
@@ -100,7 +103,7 @@ function obtenerInsumo(id){
 }
 
 function verificarInsumoSeleccionado(target){
-  return target.classList.contains(selectedClass)
+  return target.checked;
 }
 
 function verificarInsumoEnInsumosSelected(id){
@@ -260,8 +263,9 @@ function mostrarBotones(){
 
 function crearBotones(usuario){
   const botonElement = document.createElement('button');
-  botonElement.textContent = `Enviar a ${usuario.nombre}`;
+  botonElement.textContent = `${usuario.nombre}`;
   botonElement.id = usuario.username;
+  botonElement.classList.add('boton-trabajadores')
   botonElement.addEventListener('click', mostrarMensaje)
 
   return botonElement;
