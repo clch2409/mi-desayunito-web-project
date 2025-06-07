@@ -74,7 +74,7 @@ h1 {
   padding: 8px;
   border: none;
   box-shadow: 3px 3px 42px 2px rgba(0, 0, 0, 0.3);
-  width: 70%;
+  width: clamp(100px, 70%, 500px);
   height: 100px;
   user-select: none;
   display: flex;
