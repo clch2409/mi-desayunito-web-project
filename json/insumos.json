@@ -3,270 +3,360 @@
     "id": 1,
     "nombre": "papas",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 1.5
   },
   {
     "id": 2,
     "nombre": "salchichas",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "embutidos"
+    "tipoInsumo": "embutidos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.2
   },
   {
     "id": 3,
     "nombre": "Pan Hamburguesa",
     "proveedor": "Molino",
-    "tipoInsumo": "panes"
+    "tipoInsumo": "panes",
+    "tipoDeVenta": "unidad",
+    "precio": 1
   },
   {
     "id": 4,
     "nombre": "pan hamburguesa",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "panes"
+    "tipoInsumo": "panes",
+    "tipoDeVenta": "unidad",
+    "precio": 0.6
   },
   {
     "id": 5,
     "nombre": "pan shawarma",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "panes"
+    "tipoInsumo": "panes",
+    "tipoDeVenta": "unidad",
+    "precio": 0.8
   },
   {
     "id": 6,
     "nombre": "chorizos",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "embutidos"
+    "tipoInsumo": "embutidos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.5
   },
   {
     "id": 7,
     "nombre": "servilletas",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.1
   },
   {
     "id": 8,
     "nombre": "servilletas",
     "proveedor": "Mass",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.12
   },
   {
     "id": 9,
     "nombre": "toallin",
     "proveedor": "Mass",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.15
   },
   {
     "id": 10,
     "nombre": "aceite",
     "proveedor": "Mass",
-    "tipoInsumo": "aceite"
+    "tipoInsumo": "aceite",
+    "tipoDeVenta": "kg",
+    "precio": 5.0
   },
   {
     "id": 11,
     "nombre": "tenedores",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.2
   },
   {
     "id": 12,
     "nombre": "cebolla china",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 2.8
   },
   {
     "id": 13,
     "nombre": "rocoto",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 4.0
   },
   {
     "id": 14,
     "nombre": "aji lima",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 3.5
   },
   {
     "id": 15,
     "nombre": "carne molida",
     "proveedor": "Carneros Mercado",
-    "tipoInsumo": "carnes"
+    "tipoInsumo": "carnes",
+    "tipoDeVenta": "kg",
+    "precio": 10.0
   },
   {
     "id": 16,
     "nombre": "pollo",
     "proveedor": "Pollero Mercado",
-    "tipoInsumo": "carnes"
+    "tipoInsumo": "carnes",
+    "tipoDeVenta": "kg",
+    "precio": 8.0
   },
   {
     "id": 17,
     "nombre": "pollo",
     "proveedor": "Mass",
-    "tipoInsumo": "carnes"
+    "tipoInsumo": "carnes",
+    "tipoDeVenta": "kg",
+    "precio": 7.5
   },
   {
     "id": 18,
     "nombre": "ketchup",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "salsas"
+    "tipoInsumo": "salsas",
+    "tipoDeVenta": "unidad",
+    "precio": 2.0
   },
   {
     "id": 19,
     "nombre": "mostaza",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "salsas"
+    "tipoInsumo": "salsas",
+    "tipoDeVenta": "unidad",
+    "precio": 1.8
   },
   {
     "id": 20,
     "nombre": "BBQ",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "salsas"
+    "tipoInsumo": "salsas",
+    "tipoDeVenta": "unidad",
+    "precio": 2.5
   },
   {
     "id": 21,
     "nombre": "doña gusta gallina",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.0
   },
   {
     "id": 22,
     "nombre": "doña gusta carne",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.0
   },
   {
     "id": 23,
     "nombre": "doña gusta tocino",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.0
   },
   {
     "id": 24,
     "nombre": "arroz",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "cereales"
+    "tipoInsumo": "cereales",
+    "tipoDeVenta": "kg",
+    "precio": 3.0
   },
   {
     "id": 25,
     "nombre": "picadillo",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "embutidos"
+    "tipoInsumo": "embutidos",
+    "tipoDeVenta": "unidad",
+    "precio": 1.5
   },
   {
     "id": 26,
     "nombre": "harina nieve",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "harinas"
+    "tipoInsumo": "harinas",
+    "tipoDeVenta": "kg",
+    "precio": 4.0
   },
   {
     "id": 27,
     "nombre": "harina pan",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "harinas"
+    "tipoInsumo": "harinas",
+    "tipoDeVenta": "kg",
+    "precio": 4.5
   },
   {
     "id": 28,
     "nombre": "aceituna",
     "proveedor": "Venezolanos",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 6.0
   },
   {
     "id": 29,
     "nombre": "culantro",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 1.5
   },
   {
     "id": 30,
     "nombre": "pan panaderia",
     "proveedor": "Panaderia",
-    "tipoInsumo": "panes"
+    "tipoInsumo": "panes",
+    "tipoDeVenta": "unidad",
+    "precio": 0.3
   },
   {
     "id": 31,
     "nombre": "lechuga",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 2.0
   },
   {
     "id": 32,
     "nombre": "caja salchipapa #5",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.8
   },
   {
     "id": 33,
     "nombre": "bolsa 1kg sin asa",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.2
   },
   {
     "id": 34,
     "nombre": "bolsa 1,5kg sin asa",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.25
   },
   {
     "id": 35,
     "nombre": "bolsa 2kg sin asa",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.3
   },
   {
     "id": 36,
     "nombre": "bolsa 1,5kg con asa",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.35
   },
   {
     "id": 37,
     "nombre": "bolsa 2kg con asa",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.4
   },
   {
     "id": 38,
     "nombre": "bolsa de hamburguesa (papel)",
     "proveedor": "Descartables Mercado",
-    "tipoInsumo": "descartables"
+    "tipoInsumo": "descartables",
+    "tipoDeVenta": "unidad",
+    "precio": 0.15
   },
   {
     "id": 39,
     "nombre": "sal",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "kg",
+    "precio": 1.0
   },
   {
     "id": 40,
     "nombre": "comino",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "kg",
+    "precio": 2.0
   },
   {
     "id": 41,
     "nombre": "pimentón",
     "proveedor": "Verduleros Mercado",
-    "tipoInsumo": "verduras"
+    "tipoInsumo": "verduras",
+    "tipoDeVenta": "kg",
+    "precio": 3.0
   },
   {
     "id": 42,
     "nombre": "orégano",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "kg",
+    "precio": 1.5
   },
   {
     "id": 43,
     "nombre": "harina de trigo",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "harinas"
+    "tipoInsumo": "harinas",
+    "tipoDeVenta": "kg",
+    "precio": 3.5
   },
   {
     "id": 44,
     "nombre": "chuño",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "harinas"
+    "tipoInsumo": "harinas",
+    "tipoDeVenta": "kg",
+    "precio": 4.0
   },
   {
     "id": 45,
     "nombre": "sillao",
     "proveedor": "Abarrotes Mercado",
-    "tipoInsumo": "condimentos"
+    "tipoInsumo": "condimentos",
+    "tipoDeVenta": "unidad",
+    "precio": 2.5
   }
 ]

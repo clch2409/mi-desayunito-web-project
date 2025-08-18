@@ -18,6 +18,7 @@
     <h1>Hacer Lista de Compras</h1>
 
     <form action="" id="insumo-form">
+
       <div class="searching-area">
         <div class="searching">
           <select name="filter" id="insumo-select">
@@ -26,18 +27,32 @@
             <option value="proveedor">Proveedor</option>
           </select>
           <input type="search" list="filter-insumo" id="insumo-search">
+          <datalist id="filter-insumo"></datalist>
         </div>
         <div class="insumo-buttons">
           <button id="insumo-button-search"><span class="material-icons">search</span></button>
           <button id="insumo-button-clear"><span class="material-icons">close</span></button>
           <button id="insumo-button-clear-selection"><span class="material-icons">delete</span></button>
         </div>
-        <div class="users-buttons">
-
-        </div>
-        <datalist id="filter-insumo"></datalist>
+        <div class="users-buttons"></div>
       </div>
+
       <div class="insumo-container"></div>
+
+      <div class="popup">
+        <h3>Información del insumo</h3>
+        <label for="popup-quantity">
+          <span>Ingrese la cantidad que desea</span>
+          <input type="text" id="popup-quantity" inputmode="numeric">
+        </label>
+        <label for="popup-price">
+          <span>Ingrese el precio Estimado</span>
+          <input type="text" id="popup-price" inputmode="numeric">
+        </label>
+        <button id="popup-close">Cerrar</button>
+      </div>
+
+      <div class="overlay"></div>
     </form>
   </main>
   <footer>

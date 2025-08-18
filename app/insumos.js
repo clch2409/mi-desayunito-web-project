@@ -25,13 +25,19 @@ const insumoSearch = document.getElementById('insumo-search');
 const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
-const usersButtons = document.querySelector('.users-buttons')
+const usersButtons = document.querySelector('.users-buttons');
+
+const popUp = document.querySelector('.popup');
+const popUpButton = document.getElementById('popup-close');
+const overlay = document.querySelector('.overlay');
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
 insumoButtonSearch.addEventListener('click', filtrarInsumos);
 insumoButtonClear.addEventListener('click', limpiarInsumos);
-insumoButtonClearSelection.addEventListener('click', limpiarSelecciones)
+insumoButtonClearSelection.addEventListener('click', limpiarSelecciones);
+popUpButton.addEventListener('click', cerrarPopUp)
+
 
 mostrarInsumosLabels();
 mostrarBotones();
@@ -91,7 +97,8 @@ function selectInsumos(evento){
   const targetSeleccionado = verificarInsumoSeleccionado(target);
   console.log(target);
   if (targetSeleccionado){
-    insumosSelected.push(obtenerInsumo(target.id))
+    insumosSelected.push(obtenerInsumo(target.id));
+    mostrarPopUp();
   }
   else{
     insumosSelected = insumosSelected.filter(insumo => insumo.id !== target.id)
@@ -287,4 +294,15 @@ function enviarMensaje(username){
 
 function obtenerUsuarioPorUsername(nombreUsuario){
   return usuarios.find(usuario => usuario.username === nombreUsuario)
+}
+
+function mostrarPopUp(){
+  popUp.classList.add('showPopup') ;
+  overlay.classList.add('showOverlay') ;
+}
+
+function cerrarPopUp(event){
+  event.preventDefault();
+  popUp.classList.remove('showPopup') ;
+  overlay.classList.remove('showOverlay') ;
 }
