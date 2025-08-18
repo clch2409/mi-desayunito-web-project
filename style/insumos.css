@@ -11,10 +11,14 @@ h1 {
 
 .searching-area {
   width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  margin: 16px 0;
+}
+.searching-area .searching, .searching-area .insumo-buttons, .searching-area .users-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
   gap: 8px;
 }
 .searching-area input {
@@ -87,6 +91,21 @@ h1 {
 .insumo-container label:has(input:checked) {
   background-color: #4F1C51;
   color: white;
+}
+
+@media (max-width: 800px) {
+  .searching-area {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+  .insumo-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .insumo-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /*# sourceMappingURL=insumos.css.map */

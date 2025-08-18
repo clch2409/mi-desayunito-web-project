@@ -25,6 +25,7 @@ const insumoSearch = document.getElementById('insumo-search');
 const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
+const usersButtons = document.querySelector('.users-buttons')
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
@@ -256,7 +257,7 @@ function mostrarBotones(){
   usuarios.forEach(usuario => {
     console.log(usuario)
     if (usuario.username !== 'admin'){
-      insumoButtonClearSelection.insertAdjacentElement('afterend', crearBotones(usuario));
+      usersButtons.appendChild(crearBotones(usuario));
     }
   })
 }

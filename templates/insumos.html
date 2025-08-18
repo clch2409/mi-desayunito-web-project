@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"></head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <body>
   <header>
 
@@ -18,15 +19,22 @@
 
     <form action="" id="insumo-form">
       <div class="searching-area">
-        <select name="filter" id="insumo-select">
-          <option value="todos">---------</option>
-          <option value="tipoInsumo">Tipo de Insumos</option>
-          <option value="proveedor">Proveedor</option>
-        </select>
-        <input type="search" list="filter-insumo" id="insumo-search">
-        <button id="insumo-button-search">Buscar</button>
-        <button id="insumo-button-clear">Limpiar</button>
-        <button id="insumo-button-clear-selection">Quitar Seleccion</button>
+        <div class="searching">
+          <select name="filter" id="insumo-select">
+            <option value="todos">---------</option>
+            <option value="tipoInsumo">Tipo de Insumos</option>
+            <option value="proveedor">Proveedor</option>
+          </select>
+          <input type="search" list="filter-insumo" id="insumo-search">
+        </div>
+        <div class="insumo-buttons">
+          <button id="insumo-button-search"><span class="material-icons">search</span></button>
+          <button id="insumo-button-clear"><span class="material-icons">close</span></button>
+          <button id="insumo-button-clear-selection"><span class="material-icons">delete</span></button>
+        </div>
+        <div class="users-buttons">
+
+        </div>
         <datalist id="filter-insumo"></datalist>
       </div>
       <div class="insumo-container"></div>
