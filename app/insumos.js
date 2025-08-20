@@ -11,6 +11,7 @@ const tiposInsumo = Array.from(new Set(insumos.map(insumo => insumo.tipoInsumo))
 const proveedores = Array.from(new Set(insumos.map(insumo => insumo.proveedor)));
 let insumosSelected = localStorage.getItem('insumosSelected') ? JSON.parse(localStorage.getItem('insumosSelected')) : [];
 let insumosFiltered = insumos.sort((a, b) => a.proveedor.localeCompare(b.proveedor, 'es'));
+let eventoInsumo;
 
 const tipoFilterTodos = 'todos';
 const tipoFilterTipoInsumo = 'tipoInsumo';
@@ -30,6 +31,8 @@ const usersButtons = document.querySelector('.users-buttons');
 const popUp = document.querySelector('.popup');
 const popUpButton = document.getElementById('popup-close');
 const overlay = document.querySelector('.overlay');
+
+
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
@@ -93,16 +96,17 @@ function addColorLabel(target){
 //Funciones para persistencia de insumos seleccionados
 function selectInsumos(evento){
   const target = evento.target
-  // addColorLabel(target);
   const targetSeleccionado = verificarInsumoSeleccionado(target);
-  console.log(target);
+
   if (targetSeleccionado){
     insumosSelected.push(obtenerInsumo(target.id));
-    mostrarPopUp();
+    eventoInsumo = evento;
+    // mostrarPopUp();
   }
   else{
-    insumosSelected = insumosSelected.filter(insumo => insumo.id !== target.id)
+    insumosSelected = insumosSelected.filter(insumo => insumo.id != target.id);
   }
+
   localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
 }
 
@@ -122,6 +126,7 @@ function verificarInsumoEnInsumosSelected(id){
 function mostrarNombresEnFiltro(){
   const tipoFiltro = insumoSelect.value
   let tipoFiltroArray;
+
   if (tipoFiltro === tipoFilterTodos){
     tipoFiltroArray = [];
   }
@@ -131,6 +136,7 @@ function mostrarNombresEnFiltro(){
   else{
     tipoFiltroArray = proveedores;
   }
+
   validarInfoDeSelect(tipoFiltro)
   insumosDataList.innerHTML = '';
   tipoFiltroArray.forEach(nombre => {
@@ -262,7 +268,6 @@ function validarInfoDeSelect(tipoFiltro){
 //Creacion de botones
 function mostrarBotones(){
   usuarios.forEach(usuario => {
-    console.log(usuario)
     if (usuario.username !== 'admin'){
       usersButtons.appendChild(crearBotones(usuario));
     }
@@ -297,12 +302,18 @@ function obtenerUsuarioPorUsername(nombreUsuario){
 }
 
 function mostrarPopUp(){
-  popUp.classList.add('showPopup') ;
-  overlay.classList.add('showOverlay') ;
+  popUp.classList.add('show-popup') ;
+  overlay.classList.add('show-overlay') ;
 }
 
 function cerrarPopUp(event){
   event.preventDefault();
-  popUp.classList.remove('showPopup') ;
-  overlay.classList.remove('showOverlay') ;
+  deseleccionarInsumo();
+  popUp.classList.remove('show-popup');
+  overlay.classList.remove('show-overlay');
+}
+
+function deseleccionarInsumo(){
+  eventoInsumo.target.checked = false;
+  selectInsumos(eventoInsumo);
 }
