@@ -15,6 +15,7 @@ let eventoInsumo;
 
 const tipoFilterTodos = 'todos';
 const tipoFilterTipoInsumo = 'tipoInsumo';
+const tipoFilterProveedor = 'proveedor';
 const selectedClass = 'selected';
 
 const usuarios = usuarioData;
@@ -23,7 +24,7 @@ const insumoContainer = document.querySelector('.insumo-container');
 const insumoSelect = document.getElementById('insumo-select');
 const insumosDataList = document.getElementById('filter-insumo');
 const insumoSearch = document.getElementById('insumo-search');
-const insumoButtonSearch = document.getElementById('insumo-button-search');
+// const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
 const usersButtons = document.querySelector('.boton-trabajadores-container');
@@ -114,15 +115,20 @@ function agregarPrecioCantidad(evento){
   evento.preventDefault();
   const precio = popUpPrice.value;
   const cantidad = popUpQuantity.value;
-  const insumoSelected = {
-    ...obtenerInsumo(eventoInsumo.target.id),
-    precio,
-    cantidad
-  };
+  if ((precio == '' || precio == 0) || (cantidad == '' || cantidad == 0)){
+    alert('Ingrese los datos correctamente');
+  }
+  else{
+    const insumoSelected = {
+      ...obtenerInsumo(eventoInsumo.target.id),
+      precio,
+      cantidad
+    };
 
-  insumosSelected.push(insumoSelected);
-  localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
-  desaparecerPopUp();
+    insumosSelected.push(insumoSelected);
+    localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
+    desaparecerPopUp();
+  }
 }
 
 function obtenerInsumo(id){
@@ -142,14 +148,14 @@ function mostrarNombresEnFiltro(){
   const tipoFiltro = insumoSelect.value
   let tipoFiltroArray;
 
-  if (tipoFiltro === tipoFilterTodos){
-    tipoFiltroArray = [];
-  }
-  else if (tipoFiltro === tipoFilterTipoInsumo){
+  if (tipoFiltro === tipoFilterTipoInsumo){
     tipoFiltroArray = tiposInsumo;
   }
-  else{
+  else if (tipoFiltro === tipoFilterProveedor){
     tipoFiltroArray = proveedores;
+  }
+  else{
+    tipoFiltroArray = [];
   }
 
   validarInfoDeSelect(tipoFiltro)
@@ -170,13 +176,16 @@ function filtrarInsumos(evento){
   // evento.preventDefault();
   const tipoFiltro = insumoSelect.value;
   const nombreFiltro = insumoSearch.value.toLowerCase().trim();
-  let nombreFiltroValido;
+  // let nombreFiltroValido;
 
   if (tipoFiltro === tipoFilterTipoInsumo){
     insumosFiltered = insumos.filter(insumo => insumo.tipoInsumo.toLowerCase().includes(nombreFiltro));
   }
-  else{
+  else if (tipoFiltro === tipoFilterProveedor){
     insumosFiltered = insumos.filter(insumo => insumo.proveedor.toLowerCase().includes(nombreFiltro));
+  }
+  else{
+    insumosFiltered = insumos.filter(insumo => insumo.nombre.toLowerCase().includes(nombreFiltro));
   }
 
   // nombreFiltroValido = verificarNombreFiltro(tipoFiltro, nombreFiltro)
@@ -221,10 +230,12 @@ function limpiarFiltros(){
 
 function limpiarSelecciones(evento){
   evento.preventDefault();
-  localStorage.removeItem('insumosSelected');
-  insumosSelected = []
-  limpiarContenedor();
-  mostrarInsumosLabels();
+  if (confirm('¿Está seguro que desea eliminar la selección actual?')){
+    localStorage.removeItem('insumosSelected');
+    insumosSelected = []
+    limpiarContenedor();
+    mostrarInsumosLabels();
+  }
 }
 
 function deshabilitarSearch(){
@@ -301,11 +312,11 @@ function crearBotones(usuario){
 function enviarMensaje(username){
   let precioEstimado = 0;
   const user = obtenerUsuarioPorUsername(username)
-  let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n\n`;
+  let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n`;
   let newArray = [...insumosSelected.sort((a,b) => a.proveedor.localeCompare(b.proveedor))];
   newArray.forEach((insumo, index) => {
     if (index == 0 || ((index >= 1) && (newArray[index-1].proveedor != newArray[index].proveedor))){
-      mensaje += `* ${insumo.proveedor}\n\n`;
+      mensaje += `\n* ${insumo.proveedor}\n\n`;
     }
     mensaje += `\t- ${insumo.nombre} - ${insumo.cantidad} `;
     if (insumo.tipoDeVenta === 'kg'){

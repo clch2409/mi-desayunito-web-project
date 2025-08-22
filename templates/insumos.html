@@ -23,14 +23,15 @@
         <div class="searching-container">
           <select name="filter" id="insumo-select">
             <option value="todos">---------</option>
+            <option value="insumo">Insumo</option>
             <option value="tipoInsumo">Tipo de Insumos</option>
             <option value="proveedor">Proveedor</option>
           </select>
-          <input type="search" list="filter-insumo" id="insumo-search">
+          <input type="search" list="filter-insumo" id="insumo-search" autocomplete="off">
           <datalist id="filter-insumo"></datalist>
         </div>
         <div class="insumo-buttons-container">
-          <button id="insumo-button-search"><span class="material-icons">search</span></button>
+          <!-- <button id="insumo-button-search"><span class="material-icons">search</span></button> -->
           <button id="insumo-button-clear"><span class="material-icons">close</span></button>
           <button id="insumo-button-clear-selection"><span class="material-icons">delete</span></button>
         </div>
@@ -44,7 +45,7 @@
         <form action="" id="popup-form">
           <label for="popup-quantity">
             <span>Ingrese la cantidad que desea</span>
-            <input type="number" id="popup-quantity" inputmode="numeric" autocomplete="off">
+            <input type="number" id="popup-quantity" inputmode="numeric" autocomplete="off" max="20">
           </label>
           <label for="popup-price">
             <span>Ingrese el precio estimado</span>
