@@ -302,18 +302,23 @@ function enviarMensaje(username){
   let precioEstimado = 0;
   const user = obtenerUsuarioPorUsername(username)
   let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n\n`;
-  insumosSelected.sort((a,b) => a.proveedor.localeCompare(b.proveedor)).forEach(insumo => {
-    mensaje += `- ${insumo.nombre} -- ${insumo.proveedor} -- ${insumo.cantidad} `
+  let newArray = [...insumosSelected.sort((a,b) => a.proveedor.localeCompare(b.proveedor))];
+  newArray.forEach((insumo, index) => {
+    if (index == 0 || ((index >= 1) && (newArray[index-1].proveedor != newArray[index].proveedor))){
+      mensaje += `* ${insumo.proveedor}\n\n`;
+    }
+    mensaje += `\t- ${insumo.nombre} - ${insumo.cantidad} `;
     if (insumo.tipoDeVenta === 'kg'){
       mensaje += 'kg'
     }
     else{
-      mensaje += 'unidades'
+      mensaje += 'unidad(es)'
     }
+    mensaje += ` - S/.${insumo.precio}`
     mensaje += '\n'
     precioEstimado += insumo.precio * insumo.cantidad;
   })
-  mensaje += `\nPRECIO ESTIMADO ---> ${precioEstimado}`
+  mensaje += `\nPRECIO ESTIMADO ---> S/. ${precioEstimado}`
   let telefono = user.phone;
   let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
