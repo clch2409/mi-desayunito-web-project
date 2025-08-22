@@ -37,7 +37,8 @@ const popUpPrice = document.getElementById('popup-price');
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
-insumoButtonSearch.addEventListener('click', filtrarInsumos);
+// insumoButtonSearch.addEventListener('click', filtrarInsumos);
+insumoSearch.addEventListener('keyup', filtrarInsumos);
 insumoButtonClear.addEventListener('click', limpiarInsumos);
 insumoButtonClearSelection.addEventListener('click', limpiarSelecciones);
 popUpButtonClose.addEventListener('click', cerrarPopUp);
@@ -50,7 +51,7 @@ mostrarBotones();
 //Funciones para mostrar los insumos en pantalla
 function mostrarInsumosLabels(){
   insumosFiltered.forEach((insumo, index) => {
-    crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor}`, insumo.id);
+    crearLabelInputInsumo(`${insumo.nombre} - ${insumo.proveedor} - ${insumo.tipoInsumo}`, insumo.id);
   })
   validarInfoDeSelect(insumoSelect.value)
 }
@@ -166,30 +167,29 @@ function crearDatosListaFiltro(nombreTipoFiltro){
 }
 
 function filtrarInsumos(evento){
-  evento.preventDefault();
+  // evento.preventDefault();
   const tipoFiltro = insumoSelect.value;
-  const nombreFiltro = insumoSearch.value.trim();
+  const nombreFiltro = insumoSearch.value.toLowerCase().trim();
   let nombreFiltroValido;
 
-  if (tipoFiltro === tipoFilterTodos || nombreFiltro === ''){
-    insumosFiltered = insumos;
-  }
-  else if (tipoFiltro === tipoFilterTipoInsumo){
-    insumosFiltered = insumos.filter(insumo => insumo.tipoInsumo === nombreFiltro);
+  if (tipoFiltro === tipoFilterTipoInsumo){
+    insumosFiltered = insumos.filter(insumo => insumo.tipoInsumo.toLowerCase().includes(nombreFiltro));
   }
   else{
-    insumosFiltered = insumos.filter(insumo => insumo.proveedor === nombreFiltro);
+    insumosFiltered = insumos.filter(insumo => insumo.proveedor.toLowerCase().includes(nombreFiltro));
   }
 
-  nombreFiltroValido = verificarNombreFiltro(tipoFiltro, nombreFiltro)
+  // nombreFiltroValido = verificarNombreFiltro(tipoFiltro, nombreFiltro)
 
-  if(!nombreFiltroValido){
-    alert('Ingrese una búsqueda válida')
-  }
-  else{
-    insumoContainer.innerHTML = '';
-    mostrarInsumosLabels()
-  }
+  // if(!nombreFiltroValido){
+  //   alert('Ingrese una búsqueda válida')
+  // }
+  // else{
+  //   insumoContainer.innerHTML = '';
+  //   mostrarInsumosLabels()
+  // }
+  insumoContainer.innerHTML = '';
+  mostrarInsumosLabels()
 }
 
 function verificarNombreFiltro(tipoFiltro, filtroNombre){
