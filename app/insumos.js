@@ -26,21 +26,22 @@ const insumoSearch = document.getElementById('insumo-search');
 const insumoButtonSearch = document.getElementById('insumo-button-search');
 const insumoButtonClear = document.getElementById('insumo-button-clear');
 const insumoButtonClearSelection = document.getElementById('insumo-button-clear-selection');
-const usersButtons = document.querySelector('.users-buttons');
+const usersButtons = document.querySelector('.boton-trabajadores-container');
 
 const popUp = document.querySelector('.popup');
-const popUpButton = document.getElementById('popup-close');
+const popUpButtonClose = document.getElementById('popup-close');
+const popUpButtonOk = document.getElementById('popup-ok');
 const overlay = document.querySelector('.overlay');
-
-
+const popUpQuantity = document.getElementById('popup-quantity');
+const popUpPrice = document.getElementById('popup-price');
 
 insumoContainer.addEventListener('click', selectInsumos);
 insumoSelect.addEventListener('change', mostrarNombresEnFiltro);
 insumoButtonSearch.addEventListener('click', filtrarInsumos);
 insumoButtonClear.addEventListener('click', limpiarInsumos);
 insumoButtonClearSelection.addEventListener('click', limpiarSelecciones);
-popUpButton.addEventListener('click', cerrarPopUp)
-
+popUpButtonClose.addEventListener('click', cerrarPopUp);
+popUpButtonOk.addEventListener('click', agregarPrecioCantidad)
 
 mostrarInsumosLabels();
 mostrarBotones();
@@ -99,15 +100,28 @@ function selectInsumos(evento){
   const targetSeleccionado = verificarInsumoSeleccionado(target);
 
   if (targetSeleccionado){
-    insumosSelected.push(obtenerInsumo(target.id));
     eventoInsumo = evento;
-    // mostrarPopUp();
+    mostrarPopUp();
   }
   else{
     insumosSelected = insumosSelected.filter(insumo => insumo.id != target.id);
+    localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
   }
+}
 
+function agregarPrecioCantidad(evento){
+  evento.preventDefault();
+  const precio = popUpPrice.value;
+  const cantidad = popUpQuantity.value;
+  const insumoSelected = {
+    ...obtenerInsumo(eventoInsumo.target.id),
+    precio,
+    cantidad
+  };
+
+  insumosSelected.push(insumoSelected);
   localStorage.setItem('insumosSelected', JSON.stringify(insumosSelected));
+  desaparecerPopUp();
 }
 
 function obtenerInsumo(id){
@@ -285,11 +299,21 @@ function crearBotones(usuario){
 }
 
 function enviarMensaje(username){
+  let precioEstimado = 0;
   const user = obtenerUsuarioPorUsername(username)
   let mensaje = `LISTA DE COMPRAS: ${new Date().toLocaleDateString()}\n\n`;
   insumosSelected.sort((a,b) => a.proveedor.localeCompare(b.proveedor)).forEach(insumo => {
-    mensaje += `- ${insumo.nombre} -- ${insumo.proveedor}\n`
+    mensaje += `- ${insumo.nombre} -- ${insumo.proveedor} -- ${insumo.cantidad} `
+    if (insumo.tipoDeVenta === 'kg'){
+      mensaje += 'kg'
+    }
+    else{
+      mensaje += 'unidades'
+    }
+    mensaje += '\n'
+    precioEstimado += insumo.precio * insumo.cantidad;
   })
+  mensaje += `\nPRECIO ESTIMADO ---> ${precioEstimado}`
   let telefono = user.phone;
   let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
@@ -306,11 +330,21 @@ function mostrarPopUp(){
   overlay.classList.add('show-overlay') ;
 }
 
+function desaparecerPopUp(){
+  popUp.classList.remove('show-popup');
+  overlay.classList.remove('show-overlay');
+  reiniciarInputsPopup();
+}
+
 function cerrarPopUp(event){
   event.preventDefault();
   deseleccionarInsumo();
-  popUp.classList.remove('show-popup');
-  overlay.classList.remove('show-overlay');
+  desaparecerPopUp();
+}
+
+function reiniciarInputsPopup(){
+  popUpPrice.value = '';
+  popUpQuantity.value = '';
 }
 
 function deseleccionarInsumo(){

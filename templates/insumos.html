@@ -20,7 +20,7 @@
     <form action="" id="insumo-form">
 
       <div class="searching-area">
-        <div class="searching">
+        <div class="searching-container">
           <select name="filter" id="insumo-select">
             <option value="todos">---------</option>
             <option value="tipoInsumo">Tipo de Insumos</option>
@@ -29,28 +29,30 @@
           <input type="search" list="filter-insumo" id="insumo-search">
           <datalist id="filter-insumo"></datalist>
         </div>
-        <div class="insumo-buttons">
+        <div class="insumo-buttons-container">
           <button id="insumo-button-search"><span class="material-icons">search</span></button>
           <button id="insumo-button-clear"><span class="material-icons">close</span></button>
           <button id="insumo-button-clear-selection"><span class="material-icons">delete</span></button>
         </div>
-        <div class="users-buttons"></div>
+        <div class="boton-trabajadores-container"></div>
       </div>
 
       <div class="insumo-container"></div>
 
       <div class="popup">
         <h3>Información del insumo</h3>
-        <label for="popup-quantity">
-          <span>Ingrese la cantidad que desea</span>
-          <input type="number" id="popup-quantity" inputmode="numeric" autocomplete="off">
-        </label>
-        <label for="popup-price">
-          <span>Ingrese el precio estimado</span>
-          <input type="number" id="popup-price" inputmode="numeric" autocomplete="off">
-        </label>
-        <button id="popup-ok" disabled>Confirmar</button>
-        <button id="popup-close">Cerrar</button>
+        <form action="" id="popup-form">
+          <label for="popup-quantity">
+            <span>Ingrese la cantidad que desea</span>
+            <input type="number" id="popup-quantity" inputmode="numeric" autocomplete="off">
+          </label>
+          <label for="popup-price">
+            <span>Ingrese el precio estimado</span>
+            <input type="number" id="popup-price" inputmode="numeric" autocomplete="off">
+          </label>
+          <button id="popup-ok">Confirmar</button>
+          <button id="popup-close">Cerrar</button>
+        </form>
       </div>
 
       <div class="overlay"></div>
