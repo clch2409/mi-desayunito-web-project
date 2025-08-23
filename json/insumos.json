@@ -358,5 +358,45 @@
     "tipoInsumo": "condimentos",
     "tipoDeVenta": "unidad",
     "precio": 2.5
+  },
+  {
+    "id": 46,
+    "nombre": "queso fresco",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "lacteos",
+    "tipoDeVenta": "kg",
+    "precio": 5.0
+  },
+  {
+    "id": 47,
+    "nombre": "queso dambo",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "lacteos",
+    "tipoDeVenta": "kg",
+    "precio": 6.5
+  },
+  {
+    "id": 48,
+    "nombre": "jamon",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "embutidos",
+    "tipoDeVenta": "kg",
+    "precio": 7.0
+  },
+  {
+    "id": 49,
+    "nombre": "hamburguesas \"el churrasquito\"",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "carnes",
+    "tipoDeVenta": "unidad",
+    "precio": 2.0
+  },
+  {
+    "id": 50,
+    "nombre": "cafe \"melendez\"",
+    "proveedor": "Venezolanos",
+    "tipoInsumo": "bebidas",
+    "tipoDeVenta": "unidad",
+    "precio": 3.5
   }
 ]

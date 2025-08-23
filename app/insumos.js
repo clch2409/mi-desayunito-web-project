@@ -325,7 +325,7 @@ function enviarMensaje(username){
     else{
       mensaje += 'unidad(es)'
     }
-    mensaje += ` - S/.${insumo.precio}`
+    mensaje += `x S/.${insumo.precio} - S/.${insumo.precio * insumo.cantidad}`
     mensaje += '\n'
     precioEstimado += insumo.precio * insumo.cantidad;
   })
