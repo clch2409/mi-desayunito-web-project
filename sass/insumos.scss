@@ -28,7 +28,7 @@ h1 {
     align-items: center;
     column-gap: 8px;
     grid-column: 1/2;
-    padding: 0 16px;
+    margin: 0 16px;
   }
 
   .insumo-buttons-container {
@@ -216,6 +216,7 @@ h1 {
     .searching-container {
       grid-column: 1/2;
       grid-row: 1/2;
+      margin: 0;
     }
 
     .insumo-buttons-container {
