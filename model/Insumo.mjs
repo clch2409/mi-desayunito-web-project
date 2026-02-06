@@ -1,5 +1,6 @@
 export default class Insumo {
-  constructor(nombre, proveedor, tipoInsumo, tipoDeVenta, precio) {
+  constructor(id, nombre, proveedor, tipoInsumo, tipoDeVenta, precio) {
+    this.id = id;
     this.nombre = nombre;
     this.proveedor = proveedor;
     this.tipoInsumo = tipoInsumo;
